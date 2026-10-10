@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>California House Price Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>California House Price Prediction</h1>
+
+            <p>
+                Enter property and location details
+                to estimate the house value.
+            </p>
+        </div>
+
+        <form action="/predict" method="POST">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Median Income</label>
+                    <input type="number"
+                           name="MedInc"
+                           step="any"
+                           min="0"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>House Age</label>
+                    <input type="number"
+                           name="HouseAge"
+                           step="any"
+                           min="0"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Average Rooms</label>
+                    <input type="number"
+                           name="AveRooms"
+                           step="any"
+                           min="0"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Average Bedrooms</label>
+                    <input type="number"
+                           name="AveBedrms"
+                           step="any"
+                           min="0"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Population</label>
+                    <input type="number"
+                           name="Population"
+                           step="any"
+                           min="0"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Average Occupancy</label>
+                    <input type="number"
+                           name="AveOccup"
+                           step="any"
+                           min="0"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Latitude</label>
+                    <input type="number"
+                           name="Latitude"
+                           step="any"
+                           min="-90"
+                           max="90"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Longitude</label>
+                    <input type="number"
+                           name="Longitude"
+                           step="any"
+                           min="-180"
+                           max="180"
+                           required>
+                </div>
+
+            </div>
+
+            <button type="submit">
+                Predict House Price
+            </button>
+
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">
+                {{ prediction_text }}
+            </div>
+        {% endif %}
+
+        <footer>
+            Machine Learning Project | Built with Flask
+        </footer>
+
+    </div>
+
+</body>
+</html>
